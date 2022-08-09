@@ -19,7 +19,7 @@ namespace BlogAPI.Src.Contextos
 
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Tema> Temas { get; set; }
-        public DbSet<Postagem> Postagems { get; set; }
+        public DbSet<Postagem> Postagens { get; set; }
 
         #endregion
 
