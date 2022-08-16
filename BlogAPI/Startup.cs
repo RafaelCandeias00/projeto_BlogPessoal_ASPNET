@@ -1,6 +1,7 @@
 using BlogAPI.Src.Contextos;
 using BlogAPI.Src.Repositorios;
 using BlogAPI.Src.Repositorios.Implementacoes;
+using BlogAPI.Src.Servicos;
 using BlogAPI.Src.Servicos.Implementacoes;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
