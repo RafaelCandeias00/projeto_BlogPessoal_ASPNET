@@ -38,6 +38,11 @@ namespace BlogAPI.Src.Repositorios.Implementacoes
             await _contexto.SaveChangesAsync();
         }
 
+        /// <summary>
+        /// <para> Método assíncrono para pegar um usuario pelo email</para>
+        /// </summary>
+        /// <param name="email">Email do usuario</param>
+        /// <returns>UsuarioModelo</returns>
         public async Task<Usuario> PegarUsuarioPeloEmailAsync(string email)
         {
             return await _contexto.Usuarios.FirstOrDefaultAsync(u => u.Email == email);

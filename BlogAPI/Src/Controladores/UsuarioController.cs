@@ -1,5 +1,6 @@
 ﻿using BlogAPI.Src.Modelos;
 using BlogAPI.Src.Repositorios;
+using BlogAPI.Src.Servicos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -29,6 +30,13 @@ namespace BlogAPI.Src.Controladores
         #endregion
 
         #region Metodos
+        /// <summary> 
+        /// Pegar usuario pelo Email 
+        /// </summary> 
+        /// <param name="emailUsuario">E-mail do usuario</param> 
+        /// <returns>ActionResult</returns> 
+        /// <response code="200">Retorna o usuario</response> 
+        /// <response code="404">Email não existente</response>
         [HttpGet("email/{emailUsuario}")]
         [Authorize(Roles = "NORMAL, ADMINISTRADOR")]
         public async Task<ActionResult> PegarUsuarioPeloEmailAsync([FromRoute] string emailUsuario)
@@ -40,6 +48,24 @@ namespace BlogAPI.Src.Controladores
             return Ok(usuario);
         }
 
+        /// <summary>
+        /// Criar novo Usuario 
+        /// </summary> 
+        /// <param name="usuario">Contrutor para criar usuario</param> 
+        /// <returns>ActionResult</returns> 
+        /// <remarks> 
+        /// Exemplo de requisição: 
+        /// POST /api/Usuarios/cadastrar 
+        /// { 
+        ///     "nome": "Gustavo Boaz", 
+        ///     "email": "gustavo@domain.com", 
+        ///     "senha": "134652", 
+        ///     "foto": "URLFOTO", 
+        ///     "tipo": "NORMAL" 
+        /// } 
+        /// </remarks> 
+        /// <response code="201">Retorna usuario criado</response> 
+        /// <response code="401">E-mail ja cadastrado</response>
         [HttpPost("cadastrar")]
         [AllowAnonymous]
         public async Task<ActionResult> NovoUsuarioAsync([FromBody] Usuario usuario)
@@ -55,6 +81,21 @@ namespace BlogAPI.Src.Controladores
             }
         }
 
+        /// <summary> 
+        /// Pegar Autorização 
+        /// </summary> 
+        /// <param name="usuario">Construtor para logar usuario</param> 
+        /// <returns>ActionResult</returns> 
+        /// <remarks> 
+        /// Exemplo de requisição: 
+        ///     POST /api/Usuarios/logar 
+        ///     { 
+        ///         "email": "gustavo@domain.com", 
+        ///         "senha": "134652" 
+        ///     } 
+        /// </remarks> 
+        /// <response code="201">Retorna usuario criado</response> 
+        /// <response code="401">E-mail ou senha invalido</response>
         [HttpPost("logar")]
         [AllowAnonymous]
         public async Task<ActionResult> LogarAsync([FromBody] Usuario usuario)
