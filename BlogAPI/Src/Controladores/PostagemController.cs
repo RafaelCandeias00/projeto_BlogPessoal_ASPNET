@@ -27,7 +27,9 @@ namespace BlogAPI.Src.Controladores
         #endregion
 
         #region Métodos
-        // Pegar Postagem
+        /// <summary> 
+        /// Pegar todas as postagens
+        /// </summary> 
         [HttpGet]
         [Authorize]
         public async Task<ActionResult> PegarTodasPostagemAsync()
@@ -39,7 +41,9 @@ namespace BlogAPI.Src.Controladores
             return Ok(lista);
         }
 
-        // Pegar Postagem pelo Id
+        /// <summary> 
+        /// Pegar postagem pelo Id
+        /// </summary> 
         [HttpGet("id/{idPostagem}")]
         [Authorize]
         public async Task<ActionResult> PegarPostagemPeloIdAsync([FromRoute] int idPostagem)
@@ -54,7 +58,9 @@ namespace BlogAPI.Src.Controladores
             }
         }
 
-        // Criar Postagem
+        /// <summary> 
+        /// Criar nova postagem
+        /// </summary> 
         [HttpPost]
         [Authorize]
         public async Task<ActionResult> NovaPostagemAsync([FromRoute] Postagem postagem)
@@ -70,7 +76,9 @@ namespace BlogAPI.Src.Controladores
             }
         }
 
-        // Atualizar Postagem
+        /// <summary> 
+        /// Atualizar Postagem
+        /// </summary> 
         [HttpPut]
         [Authorize]
         public async Task<ActionResult> AtualizarPostagemAsync([FromRoute] Postagem postagem)
@@ -86,7 +94,9 @@ namespace BlogAPI.Src.Controladores
             }
         }
 
-        // Deletar Postagem
+        /// <summary> 
+        /// Deletar postagem
+        /// </summary> 
         [HttpDelete("deletar/{idPostagem}")]
         [Authorize]
         public async Task<ActionResult> DeletarPostagemAsync([FromRoute] int idPostagem)

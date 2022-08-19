@@ -27,6 +27,9 @@ namespace BlogAPI.Src.Controladores
         #endregion
 
         #region Metodo
+        /// <summary> 
+        /// Pegar todos os temas
+        /// </summary> 
         [HttpGet]
         [Authorize]
         public async Task<ActionResult> PegaTodosTemasAsync()
@@ -38,6 +41,9 @@ namespace BlogAPI.Src.Controladores
             return Ok(lista);
         }
 
+        /// <summary> 
+        /// Pegar tema pelo Id
+        /// </summary> 
         [HttpGet("id/{idTema}")]
         [Authorize]
         public async Task<ActionResult> PegarTemaPeloIdAsync([FromRoute] int idTema)
@@ -52,6 +58,9 @@ namespace BlogAPI.Src.Controladores
             }
         }
 
+        /// <summary> 
+        /// Criar novo tema
+        /// </summary> 
         [HttpPost]
         [Authorize]
         public async Task<ActionResult> NovoTemaAsync([FromBody] Tema tema)
@@ -67,6 +76,9 @@ namespace BlogAPI.Src.Controladores
             }
         }
 
+        /// <summary> 
+        /// Atualizar tema
+        /// </summary> 
         [HttpPut]
         [Authorize(Roles = "ADMINISTRADOR")]
         public async Task<ActionResult> AtualizarTemaAsync([FromRoute] Tema tema)
@@ -81,6 +93,9 @@ namespace BlogAPI.Src.Controladores
             }
         }
 
+        /// <summary> 
+        /// Deletar tema
+        /// </summary> 
         [HttpDelete("id/{idTema}")]
         [Authorize(Roles = "ADMINISTRADOR")]
         public async Task<ActionResult> DeletarTemaAsync([FromRoute] int idTema)
