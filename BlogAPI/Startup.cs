@@ -81,7 +81,7 @@ namespace BlogAPI
             services.AddSwaggerGen(
                 s =>
                 {
-                    s.SwaggerDoc("v1", new OpenApiInfo { Title = "Blog Pessoa", Version = "v1" });
+                    s.SwaggerDoc("v1", new OpenApiInfo { Title = "Blog Pessoal", Version = "v1" });
                     s.AddSecurityDefinition(
                         "Bearer",
                         new OpenApiSecurityScheme()
